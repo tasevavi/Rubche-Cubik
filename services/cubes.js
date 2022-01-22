@@ -71,6 +71,17 @@ async function deleteById(id) {
     }
 }
 
+async function updateById(id, cube) {
+    const data = await read();
+
+    if (data.hasOwnProperty(id)) {
+        data[id] = cube;
+        await write(data);
+    } else {
+        throw new ReferenceError('No such ID in database');
+    }
+}
+
 function nextId() {
     return 'xxxxxx-xxxx'.replace(/x/g, () => (Math.random()*16 | 0).toString(16));
 }
@@ -80,7 +91,8 @@ module.exports = () => (req, res, next) => {
         getAll, 
         getById, 
         createCube, 
-        deleteById
+        deleteById, 
+        updateById
     };
     next();
 };
