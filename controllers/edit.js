@@ -4,7 +4,7 @@ module.exports = {
         const cube = await req.storage.getById(id);
 
         if (cube) {
-            res.render('edit', {title: 'Edit Cube'}, cube); 
+            res.render('edit', {title: 'Edit Cube', cube}); 
         } else {
             res.redirect('/404');
         }
@@ -20,7 +20,7 @@ module.exports = {
 
         try {
             await req.storage.updateById(id, cube);
-            res.redirect('/');  
+            res.redirect(`/details/${id}`);  
         } catch (err) {
             res.redirect('/404');
         }
