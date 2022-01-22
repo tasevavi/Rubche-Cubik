@@ -13,8 +13,7 @@ async function read() {
 
 async function write(data) {
     try {
-        await fs.writeFile('./services/data.json', JSON.stringify(data));
-        return JSON.parse(file);
+        const file = await fs.writeFile('./services/data.json', JSON.stringify(data, null, 2));
     } catch (err) {
         console.error('Database read error');
         console.error(err);
@@ -40,10 +39,22 @@ async function getById(id) {
     }
 }
 
+async function createCube(cube) {
+    const cubes = await read();
+    let id = nextId();
+    cubes[id] = cube;
+    await write(cubes);
+}
+
+function nextId() {
+    return 'xxxxxx-xxxx'.replace(/x/g, () => (Math.random()*16 | 0).toString(16));
+}
+
 module.exports = () => (req, res, next) => {
     req.storage = {
         getAll, 
-        getById
+        getById, 
+        createCube
     };
     next();
 };

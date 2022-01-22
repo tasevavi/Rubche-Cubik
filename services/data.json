@@ -1,8 +1,32 @@
 {
-    "12345trewdsj": {
-        "name": "Rubick Cube", 
-        "description": "something",
-        "imageUrl": "https://m.media-amazon.com/images/I/61MoqpSf2qL._AC_SL1050_.jpg", 
-        "difficulty": 3
-    }
+  "12345trewdsj": {
+    "name": "Rubick Cube",
+    "description": "something",
+    "imageUrl": "https://m.media-amazon.com/images/I/61MoqpSf2qL._AC_SL1050_.jpg",
+    "price": 35
+  },
+  "401e76-ff15": {
+    "name": "Pyramid",
+    "description": "Great new Rubick cube",
+    "imageUrl": "https://m.media-amazon.com/images/I/61cJE0vAo1L._AC_SL1200_.jpg",
+    "price": "100"
+  },
+  "a5935b-e43a": {
+    "name": "New Pyramid",
+    "description": "3D Pyramid",
+    "imageUrl": "https://img.joomcdn.net/17ab634f2dfeafe84f42e927fa054329358626c0_original.jpeg",
+    "price": "20"
+  },
+  "c6a977-5cb8": {
+    "name": "Sphero",
+    "description": "Great fun!",
+    "imageUrl": "https://thumbs.dreamstime.com/z/triangle-rubik-s-cube-shape-pyramid-triangle-rubik-s-cube-shape-pyramid-isolated-white-background-136140811.jpg",
+    "price": "49"
+  },
+  "3937ee-e027": {
+    "name": "Rubick5",
+    "description": "testetst",
+    "imageUrl": "https://www.grubiks.com/images/puzzles/25/small.png",
+    "price": 56
+  }
 }
