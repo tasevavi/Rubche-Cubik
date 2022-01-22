@@ -1,10 +1,10 @@
 module.exports = {
-    get(req, res) {
+    async get(req, res) {
         const id = req.params.id;
         const cube = await req.storage.getById(id);
 
         if (cube) {
-            res.render('update', {title: 'Edit Cube'}, cube); 
+            res.render('edit', {title: 'Edit Cube'}, cube); 
         } else {
             res.redirect('/404');
         }
