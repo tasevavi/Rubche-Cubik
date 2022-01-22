@@ -1,0 +1,17 @@
+{
+  "name": "04-express-workshop",
+  "version": "1.0.0",
+  "description": "Rubick Cube Educational Express App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "VT",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2"
+  }
+}
