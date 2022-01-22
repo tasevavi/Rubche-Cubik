@@ -14,6 +14,7 @@ const { about } = require('./controllers/about.js');
 const create = require('./controllers/create.js');
 const { details } = require('./controllers/details.js');
 const { notFound } = require('./controllers/notFound.js');
+const deleteCube = require('./controllers/delete.js');
 
 app.engine('hbs', hbs.create({
     extname: '.hbs'
@@ -31,6 +32,10 @@ app.get('/details/:id', details);
 app.route('/create')
     .get(create.get)
     .post(create.post);
+
+app.route('/delete/:id')
+    .get(deleteCube.get)
+    .post(deleteCube.post);
 
 app.all('*', notFound);
 
