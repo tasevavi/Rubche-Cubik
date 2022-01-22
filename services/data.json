@@ -9,18 +9,48 @@
     "name": "Pyramid",
     "description": "Great new Rubick cube",
     "imageUrl": "https://m.media-amazon.com/images/I/61cJE0vAo1L._AC_SL1200_.jpg",
-    "price": "100"
+    "price": 44
   },
   "a5935b-e43a": {
     "name": "New Pyramid",
     "description": "3D Pyramid",
     "imageUrl": "https://img.joomcdn.net/17ab634f2dfeafe84f42e927fa054329358626c0_original.jpeg",
-    "price": "20"
+    "price": 49
   },
   "3937ee-e027": {
     "name": "Rubick5",
     "description": "testetst",
     "imageUrl": "https://www.grubiks.com/images/puzzles/25/small.png",
     "price": 56
+  },
+  "62f582-9685": {
+    "name": "Small Rubick 2x2",
+    "description": "Small Rubick 2x2",
+    "imageUrl": "https://i5.walmartimages.com/asr/b269d144-968f-4072-94a9-54e78ba86ac1.6c93e78b706a01ecff02de6d69d97604.jpeg",
+    "price": 22
+  },
+  "db1ada-da20": {
+    "name": "Big Rubick Cube 5x5",
+    "description": "Super hard to solve!",
+    "imageUrl": "https://www.rubiks.com/media/catalog/product/cache/9c57e2fe71f8a58f6afba681a0a15dd4/r/u/rubik-5x5-cube-solved.jpg",
+    "price": 59
+  },
+  "05451d-fcad": {
+    "name": "Weird Rubic Cube 2x2",
+    "description": "Strange cube hard to solve",
+    "imageUrl": "http://theendearingdesigner.com/wp-content/uploads/2016/08/img_57b91d40c42cf.jpg",
+    "price": 42
+  },
+  "cc9b6a-2bac": {
+    "name": "Strange shape cube",
+    "description": "Hard to solve",
+    "imageUrl": "https://i.pinimg.com/originals/56/17/1b/56171bd2d09d0468528f6d25d3c96d22.jpg",
+    "price": 57
+  },
+  "6bc683-e801": {
+    "name": "Flower Shape 5x5",
+    "description": "Interesting form and hard difficulty level",
+    "imageUrl": "https://ae01.alicdn.com/kf/HTB1bgzladzvK1RkSnfoq6zMwVXa3/CubeTwist-Strange-Shape-Cube-Black-White-Square-II-SQ2-3x3x3-Speed-Cube-Sector-Magic-Cube-Puzzle.jpg",
+    "price": 65
   }
 }
