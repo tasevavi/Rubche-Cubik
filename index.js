@@ -1,10 +1,3 @@
-//initialize and configure expreess
-//initialize templating lib
-//create controller
-//bind routing
-//create layout
-//create data service
-//inplement controllers
 const express = require('express');
 const app = express();
 const hbs = require('express-handlebars');

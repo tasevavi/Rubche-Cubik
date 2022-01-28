@@ -1,0 +1,17 @@
+//initialize and configure expreess
+//initialize templating lib
+//create controller
+//bind routing
+//create layout
+//create data service
+//inplement controllers
+
+upgrade:
+add database connection
+create Cube model
+upgrade CubeService to use Cube model
+create Accessory model
+update details to include Accessory
+accessory read
+accessory create
+attach accessory
