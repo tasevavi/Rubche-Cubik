@@ -45,11 +45,16 @@ async function createCube(cube) {
 }
 
 async function deleteById(id) {
-    await Cube.findByIdAndDelete(id);
+   await Cube.findByIdAndDelete(id);
 }
 
 async function updateById(id, cube) {
-    await Cube.findByIdAndUpdate(id, cube);
+    const existing = await Cube.findById(id);
+    existing.name = cube.name;
+    existing.description = cube.description;
+    existing.imageUrl = cube.imageUrl;
+    existing.price = cube.price;
+    await existing.save();
 }
 
 module.exports = () => (req, res, next) => {
