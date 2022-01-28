@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('express-handlebars');
 const initDB = require('./models/index');
 const cubeService = require('./services/cubes.js');
+const accessoryService = require('./services/accessory.js');
 const { home } = require('./controllers/home.js');
 const { about } = require('./controllers/about.js');
 const create = require('./controllers/create.js');
@@ -23,6 +24,7 @@ async function start() {
     app.use(express.urlencoded({extended: true}));
     app.use('/static', express.static('static'));
     app.use(cubeService());
+    app.use(accessoryService());
     
     app.get('/', home);
     app.get('/about', about);
