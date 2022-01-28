@@ -1,6 +1,6 @@
 //initialize and configure expreess
 //initialize templating lib
-// create controller
+//create controller
 //bind routing
 //create layout
 //create data service
