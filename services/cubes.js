@@ -73,10 +73,12 @@ async function getById(id) {
 }
 
 async function createCube(cube) {
-    const cubes = await read();
-    let id = nextId();
-    cubes[id] = cube;
-    await write(cubes);
+    const result = new Cube(cube);
+    await result.save();
+    // const cubes = await read();
+    // let id = nextId();
+    // cubes[id] = cube;
+    // await write(cubes);
 }
 
 async function deleteById(id) {
