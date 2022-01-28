@@ -10,7 +10,12 @@ module.exports = {
             price: Number(req.body.price)
         };
 
-        await req.storage.createCube(cube);
-        res.redirect('/');
+        try {
+            await req.storage.createCube(cube);
+            res.redirect('/');
+        } catch (err) {
+            console.log('Error creating record');
+            res.redirect('/create');
+        }
     }
 };
