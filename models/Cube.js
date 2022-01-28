@@ -1,10 +1,11 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types: {ObjectId} } = require('mongoose');
 
 const cubeSchema = new Schema({
     name: {type: String, required: true, minlength: 3}, 
     description: {type: String, required: true}, 
     imageUrl: {type: String, required: true}, 
-    price: {type: Number, required: true, min: 0}
+    price: {type: Number, required: true, min: 0}, 
+    accessories: { type: [ObjectId], default: [], ref: 'Accessory'}
 });
 
 const Cube = model('Cube', cubeSchema);

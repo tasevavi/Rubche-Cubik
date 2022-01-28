@@ -13,6 +13,16 @@ module.exports = {
     }, 
 
     async post(req, res) {
-        res.redirect('/');
+        const cubeId = req.params.id;
+        const accessoryId = req.body.accessory;
+
+        try {
+            await req.storage.attachAccessory(carId, accessoryId);
+            res.redirect('/');
+        } catch(err) {
+            console.log('Error creating accessory');
+            console.log(err.message);
+            res.redirect('/attach/' + cubeId);
+        }
     }
 }

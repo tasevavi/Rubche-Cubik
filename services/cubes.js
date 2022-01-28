@@ -6,7 +6,8 @@ function cubeViewModel(cube) {
         name: cube.name, 
         description: cube.description, 
         imageUrl: cube.imageUrl, 
-        price: cube.price
+        price: cube.price,
+        accessories: cube.accessories
     }
 }
 
@@ -54,7 +55,13 @@ async function updateById(id, cube) {
     existing.description = cube.description;
     existing.imageUrl = cube.imageUrl;
     existing.price = cube.price;
+    existing.accessories = cube.accessories;
     await existing.save();
+}
+
+async function attachAccessory(cubeId, accessoryId) {
+    const existing = await Cube.findById(cubeId);
+    existing.accessories.push(accessoryId);
 }
 
 module.exports = () => (req, res, next) => {
@@ -63,7 +70,8 @@ module.exports = () => (req, res, next) => {
         getById, 
         createCube, 
         deleteById, 
-        updateById
+        updateById, 
+        attachAccessory
     };
     next();
 };
