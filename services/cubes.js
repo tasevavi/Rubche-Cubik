@@ -1,16 +1,16 @@
-const fs = require('fs').promises;
+//const fs = require('fs').promises;
 const Cube = require('../models/Cube.js');
 
-async function read() {
-    try {
-        const file = await fs.readFile('./services/data.json');
-        return JSON.parse(file);
-    } catch (err) {
-        console.error('Database read error');
-        console.error(err);
-        process.exit(1)
-    }
-}
+// async function read() {
+//     try {
+//         const file = await fs.readFile('./services/data.json');
+//         return JSON.parse(file);
+//     } catch (err) {
+//         console.error('Database read error');
+//         console.error(err);
+//         process.exit(1)
+//     }
+// }
 
 function cubeViewModel(cube) {
     return {
@@ -22,18 +22,33 @@ function cubeViewModel(cube) {
     }
 }
 
-async function write(data) {
-    try {
-        const file = await fs.writeFile('./services/data.json', JSON.stringify(data, null, 2));
-    } catch (err) {
-        console.error('Database read error');
-        console.error(err);
-        process.exit(1)
-    }
-}
+// async function write(data) {
+//     try {
+//         const file = await fs.writeFile('./services/data.json', JSON.stringify(data, null, 2));
+//     } catch (err) {
+//         console.error('Database read error');
+//         console.error(err);
+//         process.exit(1)
+//     }
+// }
 
 async function getAll(query) {
-    const cubes = await Cube.find({ name: { $regex: query.search, $options: 'i' }}); //or lean()
+    const options = {};
+
+    if (query.search) {
+        options.name = new RegExp(query.search, 'i');
+    }
+    if (query.from) {
+        options.price = { $gte: Number(query.from)};
+    }
+    if (query.to) {
+        if (!options.price) {
+            options.price = {};
+        }
+        options.price.$lte = Number(query.to);
+    }
+
+    const cubes = await Cube.find(options); //or lean()
     return cubes.map(cubeViewModel);
     // const data = await read();
     // let cubes = Object
@@ -82,25 +97,27 @@ async function createCube(cube) {
 }
 
 async function deleteById(id) {
-    const data = await read();
+    await Cube.findByIdAndDelete(id);
+    // const data = await read();
     
-    if (data.hasOwnProperty(id)) {
-        delete data[id];
-        await write(data);
-    } else {
-        throw new ReferenceError('No such ID in database');
-    }
+    // if (data.hasOwnProperty(id)) {
+    //     delete data[id];
+    //     await write(data);
+    // } else {
+    //     throw new ReferenceError('No such ID in database');
+    // }
 }
 
 async function updateById(id, cube) {
-    const data = await read();
+    await Cube.findByIdAndUpdate(id, cube);
+    // const data = await read();
 
-    if (data.hasOwnProperty(id)) {
-        data[id] = cube;
-        await write(data);
-    } else {
-        throw new ReferenceError('No such ID in database');
-    }
+    // if (data.hasOwnProperty(id)) {
+    //     data[id] = cube;
+    //     await write(data);
+    // } else {
+    //     throw new ReferenceError('No such ID in database');
+    // }
 }
 
 // function nextId() {
