@@ -33,8 +33,8 @@ async function write(data) {
 }
 
 async function getAll(query) {
-    const cubes = await Cube.find({}); //or lean()
-    return cubes.map(cube => cubeViewModel(cube));
+    const cubes = await Cube.find({ name: { $regex: query.search, $options: 'i' }}); //or lean()
+    return cubes.map(cubeViewModel);
     // const data = await read();
     // let cubes = Object
     //     .entries(data)
@@ -103,9 +103,9 @@ async function updateById(id, cube) {
     }
 }
 
-function nextId() {
-    return 'xxxxxx-xxxx'.replace(/x/g, () => (Math.random()*16 | 0).toString(16));
-}
+// function nextId() {
+//     return 'xxxxxx-xxxx'.replace(/x/g, () => (Math.random()*16 | 0).toString(16));
+// }
 
 module.exports = () => (req, res, next) => {
     req.storage = {
