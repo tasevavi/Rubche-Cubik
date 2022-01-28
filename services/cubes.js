@@ -1,15 +1,5 @@
 const Cube = require('../models/Cube.js');
-
-function cubeViewModel(cube) {
-    return {
-        id: cube._id, 
-        name: cube.name, 
-        description: cube.description, 
-        imageUrl: cube.imageUrl, 
-        price: cube.price,
-        accessories: cube.accessories
-    }
-}
+const { cubeViewModel } = require('./util.js');
 
 async function getAll(query) {
     const options = {};
@@ -32,7 +22,7 @@ async function getAll(query) {
 }
 
 async function getById(id) {
-    const cube = await Cube.findById(id);
+    const cube = await Cube.findById(id).populate('accessories');
     if (cube) {
         return cubeViewModel(cube);
     } else {
