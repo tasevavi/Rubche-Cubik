@@ -1,6 +1,7 @@
 //initialize database = with mongoose they are global
 const mongoose = require('mongoose');
 const Cube = require('./Cube');
+const Accessory = require('./Accessory');
 const connectionString = 'mongodb://localhost:27017/cubes';
 
 async function init() {

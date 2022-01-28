@@ -9,6 +9,7 @@ const { details } = require('./controllers/details.js');
 const { notFound } = require('./controllers/notFound.js');
 const deleteCube = require('./controllers/delete.js');
 const edit = require('./controllers/edit.js');
+const accessory = require('./controllers/accessory.js');
 
 async function start() {
     await initDB();
@@ -38,6 +39,10 @@ async function start() {
     app.route('/edit/:id')
         .get(edit.get)
         .post(edit.post);
+    
+    app.route('/accessory')
+        .get(accessory.get)
+        .post(accessory.post);
     
     app.all('*', notFound);
     app.listen(3000, () => console.log(`Listening on port 3000...`));
