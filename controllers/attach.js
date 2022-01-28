@@ -6,6 +6,9 @@ module.exports = {
                 req.storage.getById(id), 
                 req.accessory.getAll()
             ]);
+
+            const existingIds = cube.accessories.map(a => a.id.toString());
+            const availableAccessories = accessories.filter(a => cube.accessories.includes(a.id.toString()) == false);
             res.render('accessories/attachAccessory', {title: 'Attach Accessory', cube, accessories});
         } catch (err) {
             res.redirect('/404');
