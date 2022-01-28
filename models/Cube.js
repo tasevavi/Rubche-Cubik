@@ -6,4 +6,6 @@ const cubeSchema = new Schema({
     price: {type: Number, required: true}
 });
 
-const cube = model('Cube', cubeSchema);
+const Cube = model('Cube', cubeSchema);
+
+module.exports = Cube;

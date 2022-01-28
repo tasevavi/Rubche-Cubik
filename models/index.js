@@ -1,11 +1,12 @@
 //initialize database = with mongoose they are global
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/Rubikcube/cubes';
+const Cube = require('./Cube');
+const connectionString = 'mongodb://localhost:27017/cubes';
 
 async function init() {
     try {
         await mongoose.connect(connectionString, {
-            useNerUrlParser: true, 
+            useNewUrlParser: true, 
             useUnifiedTopology: true
         });
 
