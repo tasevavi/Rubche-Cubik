@@ -46,6 +46,10 @@ async function start() {
         .get(accessory.get)
         .post(accessory.post);
     
+    app.route('/attach/:id')
+        .get(accessory.get)
+        .post(accessory.post);
+    
     app.all('*', notFound);
     app.listen(3000, () => console.log(`Listening on port 3000...`));
 }

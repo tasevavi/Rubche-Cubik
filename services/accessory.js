@@ -1,5 +1,9 @@
 const Accessory = require('../models/Accessory');
 
+async function getAll() {
+
+}
+
 async function createAccessory(accessory) {
     await Accessory.create(accessory);
 }
