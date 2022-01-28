@@ -1,4 +1,5 @@
 const fs = require('fs').promises;
+const Cube = require('../models/Cube.js');
 
 async function read() {
     try {
@@ -8,6 +9,16 @@ async function read() {
         console.error('Database read error');
         console.error(err);
         process.exit(1)
+    }
+}
+
+function cubeViewModel(cube) {
+    return {
+        id: cube._id, 
+        name: cube.name, 
+        description: cube.description, 
+        imageUrl: cube.imageUrl, 
+        price: cube.price
     }
 }
 
@@ -22,35 +33,43 @@ async function write(data) {
 }
 
 async function getAll(query) {
-    const data = await read();
-    let cubes = Object
-        .entries(data)
-        .map(([id, v]) => Object.assign({}, {id}, v));
+    const cubes = await Cube.find({}); //or lean()
+    return cubes.map(cube => cubeViewModel(cube));
+    // const data = await read();
+    // let cubes = Object
+    //     .entries(data)
+    //     .map(([id, v]) => Object.assign({}, {id}, v));
 
-    if (query.search) {
-        cubes = cubes.filter(c => c.name.toLocaleLowerCase().includes(query.search.toLocaleLowerCase()));
-    }
+    // if (query.search) {
+    //     cubes = cubes.filter(c => c.name.toLocaleLowerCase().includes(query.search.toLocaleLowerCase()));
+    // }
 
-    if (query.from) {
-        cubes = cubes.filter(c => c.price >= Number(query.from));
-    }
+    // if (query.from) {
+    //     cubes = cubes.filter(c => c.price >= Number(query.from));
+    // }
 
-    if (query.to) {
-        cubes = cubes.filter(c => c.price <= Number(query.to));
-    }
+    // if (query.to) {
+    //     cubes = cubes.filter(c => c.price <= Number(query.to));
+    // }
 
-    return cubes;
+    // return cubes;
 }
 
 async function getById(id) {
-    const data = await read();
-    const cube = data[id];
-
+    const cube = await Cube.findById(id);
     if (cube) {
-        return Object.assign({}, {id}, cube);
+        return cubeViewModel(cube);
     } else {
         return undefined;
     }
+    // const data = await read();
+    // const cube = data[id];
+
+    // if (cube) {
+    //     return Object.assign({}, {id}, cube);
+    // } else {
+    //     return undefined;
+    // }
 }
 
 async function createCube(cube) {
