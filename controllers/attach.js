@@ -18,9 +18,9 @@ module.exports = {
     async post(req, res) {
         const cubeId = req.params.id;
         const accessoryId = req.body.accessory;
-
+        console.log('AccessoryId from post:', accessoryId);
         try {
-            await req.storage.attachAccessory(carId, accessoryId);
+            await req.storage.attachAccessory(cubeId, accessoryId);
             res.redirect('/');
         } catch(err) {
             console.log('Error creating accessory');

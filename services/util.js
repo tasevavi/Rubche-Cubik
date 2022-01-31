@@ -21,6 +21,7 @@ function cubeViewModel(cube) {
     if (model.accessories.length > 0 && model.accessories[0].name) {
         model.accessories = model.accessories.map(accessoryViewModel);
     }
+    return model;
 }
 
 module.exports = {

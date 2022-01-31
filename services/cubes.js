@@ -52,6 +52,7 @@ async function updateById(id, cube) {
 async function attachAccessory(cubeId, accessoryId) {
     const existing = await Cube.findById(cubeId);
     existing.accessories.push(accessoryId);
+    console.log('Accessories after push in cube:', existing.accessories);
 }
 
 module.exports = () => (req, res, next) => {
