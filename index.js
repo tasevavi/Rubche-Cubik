@@ -4,6 +4,7 @@ const initDB = require('./models/index');
 
 const cubeService = require('./services/cubes.js');
 const accessoryService = require('./services/accessory.js');
+const authService = require('./services/authService.js');
 
 const { home } = require('./controllers/home.js');
 const { about } = require('./controllers/about.js');
@@ -29,6 +30,7 @@ async function start() {
     app.use('/static', express.static('static'));
     app.use(cubeService());
     app.use(accessoryService());
+    app.use(authService());
     
     app.get('/', home);
     app.get('/about', about);
