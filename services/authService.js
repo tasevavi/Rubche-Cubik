@@ -8,6 +8,13 @@ async function register(username, password) {
     await user.save();
 }
 
+async function login(username, password) {
+    const user = await User.findOne({username});
+    if (!user) {
+        throw new Error('Invalid username');
+    }
+}
+
 module.exports = () => (req, res, next) => {
     req.auth = {
         register
