@@ -11,9 +11,13 @@ userSchema.methods.comparePassword = async function(password) {
     return await comparePassword(password, this.hashedPassword);
 };
 
-//hash before saving
-userSchema.pre('save', async function(){
-    this.hashedPassword = await hashPassword(this.hashedPassword);
+//hash before saving and only if it was changed -> first time it will return true for isModified
+userSchema.pre('save', async function(next){
+    if (this.isModified('hashedPassword')) {
+        this.hashedPassword = await hashPassword(this.hashedPassword);
+    }
+
+    next();
 });
 
 const User = model('User', userSchema);

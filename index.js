@@ -1,5 +1,6 @@
 const express = require('express');
 const hbs = require('express-handlebars');
+const session = require('express-session');
 const initDB = require('./models/index');
 
 const cubeService = require('./services/cubes.js');
@@ -19,13 +20,20 @@ const {registerGet, registerPost, loginGet, loginPost, logoutGet} = require('./c
 
 async function start() {
     await initDB();
+
     const app = express();
+
     app.engine('hbs', hbs.create({
         extname: '.hbs'
     }).engine);
     app.set('view engine', 'hbs');
     
-    
+    app.use(session({
+        secret: 'rubick cube hobby', 
+        resave: false, 
+        saveUninitialized: true, 
+        cookie: { secure: 'auto'} //so it works in http
+    }));
     app.use(express.urlencoded({extended: true}));
     app.use('/static', express.static('static'));
     app.use(cubeService());
@@ -59,6 +67,10 @@ async function start() {
     app.route('/register')
         .get(registerGet)
         .post(registerPost);
+
+    app.route('/login')
+        .get(loginGet)
+        .post(loginPost);
     
     app.all('*', notFound);
     app.listen(3000, () => console.log(`Listening on port 3000...`));
