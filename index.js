@@ -18,6 +18,8 @@ const accessory = require('./controllers/accessory.js');
 const attach = require('./controllers/attach.js');
 const {registerGet, registerPost, loginGet, loginPost, logout} = require('./controllers/auth.js');
 
+const { isLoggedIn } = require('./services/util.js');
+
 async function start() {
     await initDB();
 
@@ -45,24 +47,24 @@ async function start() {
     app.get('/details/:id', details);
     
     app.route('/create')
-        .get(create.get)
-        .post(create.post);
+        .get(isLoggedIn(), create.get)
+        .post(isLoggedIn(), create.post);
     
     app.route('/delete/:id')
-        .get(deleteCube.get)
-        .post(deleteCube.post);
+        .get(isLoggedIn(), deleteCube.get)
+        .post(isLoggedIn(), deleteCube.post);
     
     app.route('/edit/:id')
-        .get(edit.get)
-        .post(edit.post);
+        .get(isLoggedIn(), edit.get)
+        .post(isLoggedIn(), edit.post);
     
     app.route('/accessory')
-        .get(accessory.get)
-        .post(accessory.post);
+        .get(isLoggedIn(), accessory.get)
+        .post(isLoggedIn(), accessory.post);
     
     app.route('/attach/:id')
-        .get(attach.get)
-        .post(attach.post);
+        .get(isLoggedIn(), attach.get)
+        .post(isLoggedIn(), attach.post);
 
     app.route('/register')
         .get(registerGet)
