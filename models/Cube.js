@@ -5,7 +5,8 @@ const cubeSchema = new Schema({
     description: {type: String, required: true}, 
     imageUrl: {type: String, required: true}, 
     price: {type: Number, required: true, min: 0}, 
-    accessories: { type: [ObjectId], default: [], ref: 'Accessory'}
+    accessories: { type: [ObjectId], default: [], ref: 'Accessory'},
+    owner: { type: ObjectId, ref: 'User'}
 });
 
 const Cube = model('Cube', cubeSchema);

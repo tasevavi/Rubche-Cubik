@@ -6,7 +6,8 @@ function accessoryViewModel(accessory) {
         name: accessory.name, 
         description: accessory.description, 
         imageUrl: accessory.imageUrl, 
-        price: accessory.price
+        price: accessory.price, 
+        owner: accessory.owner
     };
 }
 
@@ -17,7 +18,8 @@ function cubeViewModel(cube) {
         description: cube.description, 
         imageUrl: cube.imageUrl, 
         price: cube.price,
-        accessories: cube.accessories
+        accessories: cube.accessories,
+        owner: cube.owner
     }
 
     if (model.accessories.length > 0 && model.accessories[0].name) {

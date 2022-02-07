@@ -46,6 +46,7 @@ async function updateById(id, cube) {
     existing.imageUrl = cube.imageUrl;
     existing.price = cube.price;
     existing.accessories = cube.accessories;
+    existing.owner = cube.owner; //new thing
     await existing.save();
 }
 

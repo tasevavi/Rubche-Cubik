@@ -3,6 +3,10 @@ module.exports = {
         const id = req.params.id;
         const cube = await req.storage.getById(id);
 
+        if (cube.owner != req.session.user.id) {
+            console.log('>>>>>User is not owner<<<<<');
+            return res.redirect('/login');
+        } 
         if (cube) {
             res.render('edit', {title: 'Edit Cube', cube}); 
         } else {
