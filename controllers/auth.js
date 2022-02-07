@@ -23,8 +23,15 @@ module.exports = {
     loginGet(req, res) {
         res.render('login', { title: 'Login' });
     }, 
-    loginPost(req, res) {
-
+    async loginPost(req, res) {
+        console.log('>>>> Request from loginPost in auth.js:', req.body);
+        try {
+            await req.auth.login(req.body.username, req.body.password);
+            res.redirect('/');
+        } catch (err) {
+            console.error(err.message);
+            res.redirect('/login');
+        }
     }, 
     logoutGet(req, res) {
 

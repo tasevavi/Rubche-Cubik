@@ -26,7 +26,7 @@ function cubeViewModel(cube) {
     return model;
 }
 
-async function hashPasword(password) {
+async function hashPassword(password) {
     const result = bcrypt.hash(password, 10);
     return result;
 }
@@ -38,6 +38,6 @@ async function comparePassword(password, hashedPassword) {
 module.exports = {
     accessoryViewModel, 
     cubeViewModel, 
-    hashPasword, 
+    hashPassword, 
     comparePassword
 }

@@ -7,7 +7,7 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.comparePassword = async function(password) {
-    // Hash incoming password and compare incoming password with hashes pass
+    // Hash incoming password and compare incoming password with hashed pass
     return await comparePassword(password, this.hashedPassword);
 };
 
