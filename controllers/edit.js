@@ -23,8 +23,12 @@ module.exports = {
         };
 
         try {
-            await req.storage.updateById(id, cube);
-            res.redirect(`/details/${id}`);  
+            const updatedOK = await req.storage.updateById(id, cube, req.session.user.id);
+            if (updatedOK) {
+                res.redirect(`/details/${id}`);  
+            } else {
+                res.redirect('/login');
+            }
         } catch (err) {
             res.redirect('/404');
         }

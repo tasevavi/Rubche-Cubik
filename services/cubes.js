@@ -35,19 +35,32 @@ async function createCube(cube) {
     await result.save();
 }
 
-async function deleteById(id) {
-   await Cube.findByIdAndDelete(id);
+async function deleteById(id, ownerId) {
+    const existing = await Cube.findById(id);
+    
+    if (existing.owner != ownerId) {
+        return false;
+    }
+    
+    await Cube.findByIdAndDelete(id);
+    return true;
 }
 
-async function updateById(id, cube) {
+async function updateById(id, cube, ownerId) {
     const existing = await Cube.findById(id);
+
+    if (existing.owner != ownerId) {
+        return false;
+    }
+
     existing.name = cube.name;
     existing.description = cube.description;
     existing.imageUrl = cube.imageUrl;
     existing.price = cube.price;
     existing.accessories = cube.accessories;
-    existing.owner = cube.owner; //new thing
+    
     await existing.save();
+    return true;
 }
 
 async function attachAccessory(cubeId, accessoryId) {
